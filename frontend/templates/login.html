@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Login - MedCHR.ai{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+    <div style="width: 100%; max-width: 400px;">
+        <div class="card">
+            <h1 class="card-title" style="text-align: center; margin-bottom: 24px;">Welcome to MedCHR.ai</h1>
+            
+            <form action="/auth/token" method="POST">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="username" class="form-control" required autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; margin-top: 24px;">Sign In</button>
+            </form>
+            
+            <div style="margin-top: 24px; text-align: center;">
+                <p style="color: var(--text-muted); font-size: 13px;">
+                    Don't have an account? <a href="/ui/register" style="color: var(--accent-primary);">Sign up</a>
+                </p>
+            </div>
+            
+            <div style="margin-top: 32px;">
+                <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                    <div style="flex: 1; height: 1px; background-color: rgba(0, 0, 0, 0.1);"></div>
+                    <span style="padding: 0 16px; color: var(--text-muted); font-size: 12px; text-transform: uppercase;">Or continue with</span>
+                    <div style="flex: 1; height: 1px; background-color: rgba(0, 0, 0, 0.1);"></div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <button type="button" class="btn-secondary" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span>📧</span> Google
+                    </button>
+                    <button type="button" class="btn-secondary" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span>🏥</span> Azure AD
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

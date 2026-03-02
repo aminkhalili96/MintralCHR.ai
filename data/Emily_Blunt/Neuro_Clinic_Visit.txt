@@ -1,0 +1,8 @@
+NEUROLOGY CONSULT
+Patient: Emily Blunt
+Date: 2025-01-05
+CC: Optic Neuritis history, new tingling in L hand.
+Exam: Lhermitte's sign negative today. 
+MRI Brain: New enhancing lesion in periventricular white matter.
+Dx: Active RRMS.
+Plan: Switch to Ocrelizumab infusions.

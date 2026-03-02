@@ -1,0 +1,161 @@
+Medical Record Summary for: Charles Xavier
+Primary Condition: ESRD
+Generated: 2026-01-11
+
+--- EXECUTIVE SUMMARY ---
+Patient is a complex case with a multi-year history of ESRD. 
+Management has been complicated by Dialysis MWF. AV Fistula L arm. Secondary Hyperparathyroidism uncontrolled..
+Current status involves active disease management requiring frequent specialist interventions.
+
+--- LONGITUDINAL HISTORY (2018 - Present) ---
+[2018]: Initial presentation with non-specific symptoms. Primary care workup inconclusive.
+    - Jan 12: Labs showed mild abnormalities. Referred to specialist.
+    - Mar 04: First specialist consult. Diagnostic imaging ordered.
+    - Apr 20: Diagnosis confirmed. Initial treatment regimen (Line 1) started.
+    - Aug 15: 3-month follow-up. Partial response. Dosage increased.
+
+[2019]: Disease progression noted.
+    - Feb 10: ER Visit for acute exacerbation. Treated with IV steroids/antibiotics.
+    - Feb 12: Discharged with tapered dose.
+    - May 22: Routine follow-up. Stability achieved.
+    - Nov 08: Patient reported new side effects (nausea, fatigue). Meds adjusted.
+
+[2020]: Pandemic-era management (Telehealth).
+    - Apr 05: Tele-visit. Compliance good. Labs ordered remotely.
+    - Sep 12: Flare-up managed outpatient.
+    - Dec 20: Annual review. Imaging shows slight progression. Discussion of biologic therapy.
+
+[2021-2022]: Biologic Therapy Initiation.
+    - Jan 15, 2021: Started Biologic Agent A.
+    - Mar 01: marked improvement in symptoms.
+    - Jun 10: Insurance denial for renewal. Gap in therapy of 3 weeks.
+    - Jul 05: Appeal granted. Therapy resumed.
+    - Oct 12, 2022: Breakthrough symptoms. Switch to Biologic Agent B considered.
+
+[2023-2024]: Recent Course.
+    - High utilization of healthcare resources.
+    - Multiple consults: Cardiology, Pulmonology, Nephrology, Nutrition.
+    - Recent hospitalization (Oct 2023) for pneumonia complications.
+    - Hospital Course: admitted to floor, required O2 2L. IV Ceftriaxone/Azithro. Discharged day 5.
+
+--- COMPREHENSIVE REVIEW OF SYSTEMS ---
+General: Fatigue (chronic), weight fluctuation (+/- 5lbs).
+HEENT: Occasional dry eyes.
+CV: HTN controlled on meds. Occasional palpitations.
+Pulm: Dyspnea on exertion (baseline).
+GI: GERD symptoms, controlled with PPI.
+GU: No dysuria.
+MSK: Joint pains (knees, hands) worse in morning.
+Neuro: Mild neuropathy in feet (likely diabetic/idiopathic).
+Psych: Anxiety related to chronic illness.
+
+--- SOCIAL HISTORY & DETERMINANTS ---
+Occupation: Retired / Disability.
+Living Situation: Lives with spouse. Split-level home (stairs are a barrier).
+Habits: 
+    - Smoking: Quit 10 years ago (20 pack-year history).
+    - Alcohol: Occasional glass of wine.
+    - Diet: Tries to follow low-sodium, but compliance varies.
+
+--- FAMILY HISTORY ---
+Mother: T2DM, HTN. Died age 78 (Stroke).
+Father: COPD, CAD. Died age 72 (MI).
+Siblings: Brother with similar autoimmune condition.
+
+--- CURRENT MEDICATIONS (Reconciled) ---
+1. ESRD Specific Agent: High dose / biologic.
+2. Lisinopril 20mg Daily (HTN).
+3. Atorvastatin 40mg Daily (Lipids).
+4. Metformin 1000mg BID (Metabolic).
+5. Omeprazole 20mg Daily (GERD).
+6. Multivitamin Daily.
+7. Vitamin D3 2000 IU Daily.
+
+--- PLAN ---
+1. Continue current biologic/therapy.
+2. Monitor renal function every 3 months.
+3. Referral to PT for mobility/strength.
+4. Dietary consult for inflammation reduction.
+    
+
+------------------------------
+[ARCHIVED NOTES - 2015-2017]
+
+Medical Record Summary for: Charles Xavier
+Primary Condition: ESRD
+Generated: 2026-01-11
+
+--- EXECUTIVE SUMMARY ---
+Patient is a complex case with a multi-year history of ESRD. 
+Management has been complicated by Dialysis MWF. AV Fistula L arm. Secondary Hyperparathyroidism uncontrolled..
+Current status involves active disease management requiring frequent specialist interventions.
+
+--- LONGITUDINAL HISTORY (2015 - Present) ---
+[2015]: Initial presentation with non-specific symptoms. Primary care workup inconclusive.
+    - Jan 12: Labs showed mild abnormalities. Referred to specialist.
+    - Mar 04: First specialist consult. Diagnostic imaging ordered.
+    - Apr 20: Diagnosis confirmed. Initial treatment regimen (Line 1) started.
+    - Aug 15: 3-month follow-up. Partial response. Dosage increased.
+
+[2016]: Disease progression noted.
+    - Feb 10: ER Visit for acute exacerbation. Treated with IV steroids/antibiotics.
+    - Feb 12: Discharged with tapered dose.
+    - May 22: Routine follow-up. Stability achieved.
+    - Nov 08: Patient reported new side effects (nausea, fatigue). Meds adjusted.
+
+[2017]: Pandemic-era management (Telehealth).
+    - Apr 05: Tele-visit. Compliance good. Labs ordered remotely.
+    - Sep 12: Flare-up managed outpatient.
+    - Dec 20: Annual review. Imaging shows slight progression. Discussion of biologic therapy.
+
+[2021-2022]: Biologic Therapy Initiation.
+    - Jan 15, 2021: Started Biologic Agent A.
+    - Mar 01: marked improvement in symptoms.
+    - Jun 10: Insurance denial for renewal. Gap in therapy of 3 weeks.
+    - Jul 05: Appeal granted. Therapy resumed.
+    - Oct 12, 2022: Breakthrough symptoms. Switch to Biologic Agent B considered.
+
+[2023-2024]: Recent Course.
+    - High utilization of healthcare resources.
+    - Multiple consults: Cardiology, Pulmonology, Nephrology, Nutrition.
+    - Recent hospitalization (Oct 2023) for pneumonia complications.
+    - Hospital Course: admitted to floor, required O2 2L. IV Ceftriaxone/Azithro. Discharged day 5.
+
+--- COMPREHENSIVE REVIEW OF SYSTEMS ---
+General: Fatigue (chronic), weight fluctuation (+/- 5lbs).
+HEENT: Occasional dry eyes.
+CV: HTN controlled on meds. Occasional palpitations.
+Pulm: Dyspnea on exertion (baseline).
+GI: GERD symptoms, controlled with PPI.
+GU: No dysuria.
+MSK: Joint pains (knees, hands) worse in morning.
+Neuro: Mild neuropathy in feet (likely diabetic/idiopathic).
+Psych: Anxiety related to chronic illness.
+
+--- SOCIAL HISTORY & DETERMINANTS ---
+Occupation: Retired / Disability.
+Living Situation: Lives with spouse. Split-level home (stairs are a barrier).
+Habits: 
+    - Smoking: Quit 10 years ago (20 pack-year history).
+    - Alcohol: Occasional glass of wine.
+    - Diet: Tries to follow low-sodium, but compliance varies.
+
+--- FAMILY HISTORY ---
+Mother: T2DM, HTN. Died age 78 (Stroke).
+Father: COPD, CAD. Died age 72 (MI).
+Siblings: Brother with similar autoimmune condition.
+
+--- CURRENT MEDICATIONS (Reconciled) ---
+1. ESRD Specific Agent: High dose / biologic.
+2. Lisinopril 20mg Daily (HTN).
+3. Atorvastatin 40mg Daily (Lipids).
+4. Metformin 1000mg BID (Metabolic).
+5. Omeprazole 20mg Daily (GERD).
+6. Multivitamin Daily.
+7. Vitamin D3 2000 IU Daily.
+
+--- PLAN ---
+1. Continue current biologic/therapy.
+2. Monitor renal function every 3 months.
+3. Referral to PT for mobility/strength.
+4. Dietary consult for inflammation reduction.

@@ -1,0 +1,6 @@
+CONSULTATION NOTE - CARDIOLOGY
+Patient: John Doe | DOB: 04/12/1965 | Date: 2025-01-10
+History: History of CAD, s/p DES 2018. HTN uncontrolled.
+Meds: Lisinopril 40mg, Atorvastatin 40mg, Metformin 1000mg BID.
+Assessment: Stable CAD, worsening HTN, Stage 3a CKD.
+Plan: Intensify anti-hypertensives.

@@ -1,0 +1,34 @@
+CONSULTATION NOTE - CARDIOLOGY
+Patient: John Doe
+DOB: 04/12/1965
+Date: 2025-01-10
+
+HISTORY OF PRESENT ILLNESS:
+Mr. Doe presents for follow-up of Coronary Artery Disease (CAD) and Hypertension. He reports occasional shortness of breath with exertion (NYHA Class II). Denies chest pain at rest.
+
+PAST MEDICAL HISTORY:
+1. CAD - s/p DES to LAD in 2018.
+2. Hypertension - poorly controlled.
+3. Type 2 Diabetes Mellitus - diagnosed 2015.
+4. Hyperlipidemia.
+
+MEDICATIONS:
+- Lisinopril 20mg PO Daily
+- Metformin 1000mg PO BID
+- Atorvastatin 40mg PO Daily
+- Aspirin 81mg PO Daily
+- Carvedilol 12.5mg PO BID
+
+PHYSICAL EXAM:
+BP 150/92 | HR 78 | RR 18 | BMI 32
+Gen: NAD, obese.
+CV: RRR, no murmurs. Trace edema BL LE.
+Lungs: Clear to auscultation.
+
+ASSESSMENT/PLAN:
+1. CAD: Stable. Continue medical management.
+2. HTN: Uncontrolled. Will increase Lisinopril to 40mg daily.
+3. T2DM: Last HbA1c was 7.8% today in clinic draft.
+4. Renal: Monitor Creatinine closely given APOL1 risk genotype.
+
+Genetic testing confirmed APOL1 High risk genotype. Discussed implications for kidney health.

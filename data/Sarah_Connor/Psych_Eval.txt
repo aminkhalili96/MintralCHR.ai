@@ -1,0 +1,9 @@
+PSYCHIATRIC EVALUATION
+Patient: Sarah Connor
+Date: 2024-12-20
+HPI: Worsening nightmares, hypervigilance.
+PharmGen: CYP2D6 Poor Metabolizer (Avoid Paroxetine).
+Plan:
+1. Sertraline 50mg (start low due to metabolism).
+2. Prazosin 2mg QHS for nightmares.
+3. CBT Referral.

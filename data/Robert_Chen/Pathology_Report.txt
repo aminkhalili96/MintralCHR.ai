@@ -1,0 +1,5 @@
+SURGICAL PATHOLOGY REPORT
+Specimen: CT-guided biopsy, RUL lung mass.
+Diagnosis: Invasive Adenocarcinoma.
+IHC: TTF-1 (+), Napsin A (+).
+Molecular: EGFR Mutation Detected (Exon 19 Deletion).

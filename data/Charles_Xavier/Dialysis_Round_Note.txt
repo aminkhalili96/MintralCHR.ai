@@ -1,0 +1,11 @@
+DIALYSIS UNIT NOTE
+Patient: Charles Xavier
+Date: 2025-01-13
+Access: L AV Fistula (functional, no thrill issues).
+Treatment: HD 4 hours, Tues/Thu/Sat.
+Dry Weight: 72kg. Pre-dialysis wt: 74.5kg.
+Labs:
+- Potassium: 5.6 mmol/L
+- Phosphorus: 6.8 mg/dL (High)
+- PTH: 450 pg/mL (High)
+Plan: Increase Sevelamer to 1600mg TID with meals.

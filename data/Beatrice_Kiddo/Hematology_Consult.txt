@@ -1,0 +1,11 @@
+HEMATOLOGY CONSULT
+Patient: Beatrice Kiddo
+Date: 2025-01-14
+Diagnosis: Sickle Cell Anemia (HbSS).
+HPI: Presents with acute chest syndrome ruled out, mostly bone pain in LE.
+Labs:
+- Hemoglobin: 7.2 g/dL
+- Reticulocyte Count: 12% (High)
+- Total Bilirubin: 2.5 mg/dL (High)
+Meds: Hydroxyurea 1500mg Daily. Folic Acid.
+Plan: IV Hydration. PCA Morphine.

@@ -1,0 +1,10 @@
+GERIATRIC ASSESSMENT
+Patient: Linda Hamilton
+Date: 2024-11-30
+Cognition: MMSE 22/30. Short term memory deficits prominent.
+Falls: 2 falls in last 6 months.
+Meds Review:
+- Donepezil 10mg QHS
+- Memantine 5mg BID
+- Calcium/Vit D
+Plan: Physical Therapy for balance. Home safety evaluation.

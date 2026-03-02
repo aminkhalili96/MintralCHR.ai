@@ -1,0 +1,7 @@
+DERMATOLOGY CLINIC
+Patient: Diana Prince
+Date: 2025-01-08
+Exam: Erythematous plaques with sliver scale on elbows, knees, scalp. BSA 15%.
+Joints: Swelling in R 2nd/3rd PIP joints.
+Diagnosis: Psoriatic Arthritis.
+Plan: Failed Methotrexate. Start Secukinumab (Cosentyx).

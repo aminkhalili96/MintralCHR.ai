@@ -1,0 +1,7 @@
+GASTROENTEROLOGY
+Patient: Fiona Gallagher
+Date: 2025-01-11
+HPI: Flare of Crohn's. 6-8 BMs/day. Abdominal pain RLQ.
+Labs: Fecal Calprotectin 800 (High). Albumin 3.2 (Low).
+Colonoscopy: Deep ulcerations in terminal ileum.
+Plan: Induce w/ Prednisone 40mg. Start Infliximab.

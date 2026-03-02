@@ -1,0 +1,25 @@
+.env
+.env.*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.venv
+venv/
+.mypy_cache/
+.pytest_cache/
+.DS_Store
+backend/.env
+backend/.venv
+backend/venv
+doc/private/
+# data/  # Commented out - mock data is safe to access
+data/retention_exports/
+medchr.db
+medchr.db-shm
+medchr.db-wal
+uvicorn.log
+backend_debug.log
+migration.log
+migration_retry.log

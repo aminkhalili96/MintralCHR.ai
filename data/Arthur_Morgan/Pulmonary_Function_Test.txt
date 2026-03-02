@@ -1,0 +1,10 @@
+PULMONARY FUNCTION TEST
+Patient: Arthur Morgan
+Date: 2024-12-10
+Spirometry:
+- FEV1: 0.9L (30% predicted) [Severe Obstruction]
+- FVC: 2.1L (55% predicted)
+- FEV1/FVC Ratio: 0.42
+Gas Exchange:
+- DLCO: 40% predicted [Severe diffusion impairment]
+Impression: Severe irreversible obstruction consistent with emphysema.

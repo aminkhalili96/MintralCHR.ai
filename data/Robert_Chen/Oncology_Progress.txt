@@ -1,0 +1,7 @@
+ONCOLOGY PROGRESS NOTE
+Patient: Robert Chen
+Date: 2025-01-12
+Dx: Stage IV NSCLC (Adenocarcinoma).
+Genetics: EGFR Exon 19 del positive. PD-L1 < 1%.
+Imaging: CT Chest shows slight regression of RUL mass.
+Plan: Continue Osimertinib 80mg Daily. Monitor for rash/diarrhea.

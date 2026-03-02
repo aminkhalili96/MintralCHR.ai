@@ -1,0 +1,10 @@
+INFECTIOUS DISEASE
+Patient: David Kim
+Date: 2025-01-03
+Diagnosis: HIV-1 infection, Hep B coinfection.
+Labs:
+- HIV-1 Viral Load: Undetectable (<20 copies/mL)
+- CD4: 850 (Normal)
+- Hep B Viral Load: < 10 IU/mL
+Meds: Biktarvy (Bictegravir/Emtricitabine/TAF) Daily.
+Adherence: 100%. No side effects.

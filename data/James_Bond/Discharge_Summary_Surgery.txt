@@ -1,0 +1,12 @@
+DISCHARGE SUMMARY
+Patient: James Bond
+Admission: 2024-12-25
+Discharge: 2025-01-02
+Diagnoses:
+1. Traumatic R Femur Fracture (ORIF performed).
+2. Splenic Devascularization/Splenectomy.
+Course: Uncomplicated post-op. PT started.
+Meds:
+- Oxycodone 5mg q6h PRN Pain
+- Enoxaparin 40mg SC Daily (DVT Prophylaxis) x 4 weeks
+Vaccines given: Pneumococcal, Meningococcal, Hib (Post-Splenectomy).

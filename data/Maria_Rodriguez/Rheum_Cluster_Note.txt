@@ -1,0 +1,8 @@
+RHEUMATOLOGY CLINIC
+Patient: Maria Rodriguez
+Date: 2024-12-15
+HPI: Morning stiffness > 1hr.
+Labs: CRP 15 (H), ESR 45 (H).
+MRI: Bilateral Sacroiliitis.
+Dx: Ankylosing Spondylitis.
+Rx: Humira 40mg SC q2w.

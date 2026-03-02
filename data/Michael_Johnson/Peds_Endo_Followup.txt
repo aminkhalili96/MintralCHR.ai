@@ -1,0 +1,8 @@
+PEDIATRIC ENDOCRINOLOGY
+Patient: Michael Johnson (20yo)
+Date: 2025-01-09
+Type 1 DM since age 8.
+Pump: T-Slim X2 with Control-IQ.
+Last HbA1c: 6.9% (Excellent).
+Recent hypoglycemia episodes post-soccer practice.
+Plan: Adjust basal rate -50% during exercise mode.

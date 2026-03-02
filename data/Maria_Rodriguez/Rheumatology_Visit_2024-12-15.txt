@@ -1,0 +1,28 @@
+CLINIC NOTE - RHEUMATOLOGY
+Patient: Maria Rodriguez
+Date: 2024-12-15
+
+CC: Morning stiffness, lower back pain.
+
+HPI: 47yo F with 3 month hx of progressive morning stiffness > 1 hour. Improves with activity. NSAIDs provide partial relief.
+
+ROS: +Fatigue, +Joint pain (SI joints, knees). -Fevers, -Rashes.
+
+Meds:
+- Ibuprofen 600mg TID PRN
+- Multivitamin
+
+Labs reviewed:
+- CRP: 15 mg/L (High)
+- ESR: 45 mm/hr (High)
+- HLA-B27: Positive
+
+MRI Pelvis: Bilateral sacroiliitis consistent with inflammatory spondyloarthropathy.
+
+Assessment:
+1. Ankylosing Spondylitis.
+2. Anemia of chronic disease.
+
+Plan:
+Start Adalimumab (Humira) 40mg SC every other week.
+Screen for TB before starting biologic.

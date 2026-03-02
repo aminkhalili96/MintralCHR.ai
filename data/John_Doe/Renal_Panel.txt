@@ -1,0 +1,6 @@
+LAB REPORT - RENAL
+Date: 2025-01-08
+Creatinine: 1.5 mg/dL (High)
+eGFR: 52 mL/min (Low)
+BUN: 22 mg/dL (High)
+Potassium: 4.9 mmol/L
