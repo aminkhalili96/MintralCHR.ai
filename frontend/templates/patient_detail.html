@@ -126,41 +126,6 @@
     background: rgba(31, 30, 29, 0.02);
   }
 
-  .activity-details {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .activity-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 8px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--accent-primary) 8%, transparent);
-    color: var(--text-secondary);
-    font-size: 12px;
-    line-height: 1.2;
-  }
-
-  .activity-pill-key {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-size: 10px;
-    color: var(--text-muted);
-  }
-
-  .activity-raw {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 12px;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: var(--text-secondary);
-  }
-
   .demo-flow {
     display: flex;
     align-items: center;
@@ -1013,75 +978,6 @@
 {% endif %}
 
 
-
-<!-- ═══════════════════ ACTIVITY LOG ═══════════════════ -->
-<hr class="section-divider" id="activity">
-
-<div class="section-header">
-  <h2 class="section-title">Activity</h2>
-</div>
-
-{% if logs %}
-<table class="data-table">
-  <thead>
-    <tr>
-      <th>Time</th>
-      <th>Actor</th>
-      <th>Action</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for log in logs %}
-    <tr>
-      <td style="color: var(--text-muted); white-space: nowrap;">{{ log.created_at.strftime('%Y-%m-%d %H:%M:%S') if
-        log.created_at else log.created_at }}</td>
-      <td>{{ log.actor }}</td>
-      <td style="font-weight: 500;">{{ log.action }}</td>
-      <td style="color: var(--text-muted); font-size: 13px;">
-        {% if log.details %}
-        {% if log.details is mapping %}
-        <div class="activity-details">
-          {% if log.details.get('ip') %}
-          <span class="activity-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            {{ log.details.get('ip') }}
-          </span>
-          {% endif %}
-          {% for key, value in log.details.items() %}
-          {% if key != 'ip' %}
-          <span class="activity-pill">
-            <span class="activity-pill-key">{{ key | replace('_', ' ') }}</span>
-            <span>
-              {% if value is mapping or (value is sequence and not (value is string)) %}
-              {{ value | tojson }}
-              {% else %}
-              {{ value }}
-              {% endif %}
-            </span>
-          </span>
-          {% endif %}
-          {% endfor %}
-        </div>
-        {% else %}
-        <div class="activity-raw">{{ log.details }}</div>
-        {% endif %}
-        {% else %}
-        -
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% else %}
-<p class="section-empty">No activity logged yet.</p>
-{% endif %}
 
 <script nonce="{{ csp_nonce }}">
   // Records tab switching
