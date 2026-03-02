@@ -1,219 +1,178 @@
 # MintralCHR.ai
 
-Mistral-powered clinician-in-the-loop pipeline for turning raw patient records into editable Client Health Reports (CHRs).
+Mistral-first clinical reporting platform that transforms raw medical records (PDFs, images, clinical notes) into structured, editable Client Health Reports (CHRs) with source-aware workflows.
 
-## Recent Changes (2026-03-01)
-- **Bug fix**: Fixed 500 Internal Server Error on all authenticated pages. Root cause: `ip_whitelist.py` queried non-existent `ip_whitelist` column; corrected to use `allowed_ips` (PostgreSQL ARRAY type).
-- **Bug fix**: Fixed psycopg `IndeterminateDatatype` error on patient detail page. Replaced `(%s IS NULL OR p.tenant_id = %s)` SQL pattern with conditional query branches in `_list_documents`, `_latest_extraction`, and `_aggregate_structured`.
-- **Gap Features API**: Added clinical analytics endpoints (`/api/gap/`) for longitudinal trends, patient timeline, diagnosis suggestions, genetics interpretation, drug interactions, and clinical rules.
-- **Data generation**: Added `generate_4_serangkai` script for simulating realistic patient histories with hypertension, diabetes, hyperlipidemia, and obesity data.
+## What It Does
 
-### Previous Changes (2026-02-12)
-- Presigned upload API contract tightened.
-- Control validation and LLM gateway validation scripts made execution-path stable.
-- Consent/webhook/IP allowlist helpers now correctly manage DB connections.
-- Consent expiry checks use timezone-aware UTC comparison.
+- Ingests patient documents and notes
+- Runs OCR + extraction into structured clinical data
+- Generates embeddings and retrieval context (RAG)
+- Produces draft CHRs for clinician review
+- Provides clinical analytics (trends, alerts, timeline, suggestions)
+- Includes admin/user/security controls for healthcare workflows
+
+## Core Stack
+
+- Backend: FastAPI + PostgreSQL + pgvector
+- Storage: Supabase Storage
+- LLM/OCR pipeline: Mistral API (OpenAI-compatible interface)
+- Templates/UI: server-rendered Jinja pages (`/ui`)
+
+## Mistral-First Configuration
+
+This project is configured to use Mistral as the primary model provider.
+
+Important: some internal modules still check `OPENAI_API_KEY` while requests are sent to Mistral-compatible endpoints.
+For full feature coverage, set **both** `MISTRAL_API_KEY` and `OPENAI_API_KEY` to your Mistral key.
+
+### Required environment values
+
+```bash
+# Database / storage
+DATABASE_URL=postgresql://...
+SUPABASE_URL=https://<project>.supabase.co
+SUPABASE_ANON_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
+STORAGE_BUCKET=medchr-uploads
+
+# Mistral (primary)
+MISTRAL_API_KEY=<your_mistral_key>
+OPENAI_API_KEY=<your_mistral_key>
+OPENAI_BASE_URL=https://api.mistral.ai/v1
+OPENAI_MODEL=mistral-large-latest
+OPENAI_EMBEDDING_MODEL=mistral-embed
+
+# App
+APP_SECRET_KEY=<strong_random_secret>
+APP_ENV=dev
+APP_BASE_URL=http://127.0.0.1:8000
+```
 
 ## Quick Start
-Run all commands from the project root (one level up from this file).
 
-1) Create a virtualenv and install deps:
+Run from project root:
+
+```bash
+cd MintralCHR.ai
+```
+
+1. Create and activate virtualenv
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
+```
+
+2. Install dependencies
+
+```bash
 pip install -r backend/requirements.txt
 ```
 
-2) Copy env template:
+3. Create `.env`
 
 ```bash
 cp .env.example .env
+# then edit .env using the Mistral-first config above
 ```
 
-Fill in:
-- `DATABASE_URL`
-- `SUPABASE_URL`
-- `SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `OPENAI_API_KEY`
-- `OPENAI_MODEL`
-- `OPENAI_EMBEDDING_MODEL`
-- `APP_SECRET_KEY`
-- `APP_BASE_URL` (for SSO callback URLs)
-- `API_KEYS` (optional if you provision DB-backed keys; in `HIPAA_MODE`/`APP_ENV=prod` this must be tenant-scoped: `<tenant_uuid>:<key>`)
-- `HIPAA_MODE` (set `true` for production)
-- `PHI_PROCESSORS` (e.g., `openai,supabase` when BAAs are in place)
-- `MFA_SECRET_KEY` (optional Fernet key; if omitted, derived from `APP_SECRET_KEY`)
-- `REDIS_URL` (optional, enables Redis-backed job queue)
-- `RETENTION_IMMUTABLE_DIR` (required in execute mode when purging audit/PHI data)
-- `TRUST_PROXY_HEADERS` and `TRUSTED_PROXY_IPS` (required when running behind ingress/LB and enforcing tenant IP allowlists)
+4. Ensure infrastructure
 
-Optional enterprise identity settings:
-- `OIDC_ENABLED`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`, `OIDC_DISCOVERY_URL`
-- `AZURE_AD_ENABLED`, `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID`
-- `GOOGLE_WORKSPACE_ENABLED`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`
-- `SSO_ALLOWED_DOMAINS`, `SSO_ALLOWED_PROVIDERS`, `SSO_REQUIRE_VERIFIED_EMAIL`
+- Supabase Storage bucket exists: `medchr-uploads` (private)
+- PostgreSQL has `vector` extension enabled
 
-3) Create Supabase Storage bucket:
-- **Storage → New bucket →** `medchr-uploads` (private)
-
-4) Enable pgvector in Supabase:
-- **Database → Extensions →** `vector`
-
-5) Apply DB migrations:
+5. Initialize database
 
 ```bash
 python -m backend.scripts.init_db
 ```
 
-6) Run API:
-
-```bash
-uvicorn app.main:app --app-dir backend --reload
-```
-
-7) One-command dev run (applies schema + starts API):
+6. Start app
 
 ```bash
 ./run_dev.sh
 ```
 
-8) Open UI:
-- Visit `http://127.0.0.1:8000/ui`
-- Create a tenant + first admin user (once):
-  - `python -m backend.scripts.bootstrap_admin`
-- **Dev credentials**: `admin@medchr.ai` / `admin` (created by bootstrap)
-- Embeddings debug: `http://127.0.0.1:8000/ui/embeddings`
-- RAG viewer: open a patient and click “View RAG Top-K Chunks”
+7. Open UI
 
-9) Provision an API key (recommended for production/HIPAA mode):
+- `http://127.0.0.1:8000/ui`
+
+8. Bootstrap admin user (first run)
 
 ```bash
-python -m backend.scripts.create_api_key \
-  --tenant-id 00000000-0000-0000-0000-000000000000 \
-  --name integration-service \
-  --scopes read,write
+python -m backend.scripts.bootstrap_admin
 ```
 
-Notes:
-- The plaintext key is shown once.
-- The database stores only an HMAC hash (`api_keys.key_hash`).
-- API authentication accepts either tenant-scoped `API_KEYS` from env (format: `<tenant_uuid>:<key>`) or active DB-backed keys.
-- API-key scopes are enforced (`read` / `write` / `admin`) and DB-backed per-key `rate_limit` is enforced per-minute.
-- UI sessions are server-side (`ui_sessions` table); cookies carry only a signed opaque session id.
-- Sensitive UI actions require step-up MFA in `HIPAA_MODE`/`APP_ENV=prod`.
-- MFA secrets are stored encrypted at rest (`users.mfa_secret_encrypted`).
-- MFA lockouts are account-scoped and persisted in `mfa_lockouts` (survive browser/session resets).
-- SSO login entrypoint is `/ui/sso/login` when any SSO provider is enabled.
-- Tenant IP allowlists are enforced for both API-key and UI-authenticated requests when configured.
-- Forwarded client IP headers are only trusted when `TRUST_PROXY_HEADERS=true` and the socket source IP is in `TRUSTED_PROXY_IPS`.
+## Key Workflows
 
-## Background Jobs (Recommended)
-Enable async processing (OCR, embeddings, CHR draft) by setting `JOB_QUEUE_ENABLED=true` and running a worker:
+### Document extraction + embeddings + CHR
+
+- Upload document via UI or API
+- Extract text/structured data
+- Embed extracted content
+- Draft CHR from patient context
+
+### Background jobs (optional)
 
 ```bash
+# enable JOB_QUEUE_ENABLED=true in .env
 python -m backend.scripts.worker
 ```
 
-If `REDIS_URL` is configured, enqueue/claim runs through Redis (`REDIS_QUEUE_NAME`, default `medchr:jobs`) with DB status tracking as fallback.
+## Main Endpoints
 
-## Mock Data Import (Bulk)
-To load the synthetic dataset into Postgres and Supabase Storage:
+- `GET /health` - liveness
+- `GET /ready` - readiness (DB + storage)
+- `POST /patients` - create patient
+- `GET /patients` - list patients
+- `POST /patients/{patient_id}/documents` - upload document
+- `POST /documents/{document_id}/extract` - run extraction
+- `POST /documents/{document_id}/embed` - generate/store embeddings
+- `POST /chr/draft` - generate draft CHR
+- `GET /jobs/{job_id}` - async job status
 
-```bash
-python -m backend.scripts.import_mock_data
-```
+Clinical analytics endpoints:
 
-Optional flags:
-- `--patient patient_a` (repeat for multiple)
-- `--skip-embed` (skip embeddings)
-- `--skip-draft` (skip CHR draft)
+- `GET /api/gap/patients/{patient_id}/trends`
+- `GET /api/gap/patients/{patient_id}/timeline`
+- `GET /api/gap/patients/{patient_id}/suggested-diagnoses`
+- `GET /api/gap/patients/{patient_id}/genetics`
+- `GET /api/gap/patients/{patient_id}/drug-interactions`
+- `GET /api/gap/patients/{patient_id}/clinical-insights`
 
-## Synthetic Data Generation (Scale Testing)
-Generate 100 realistic, complex hospital-grade patient records directly into the database (no local files created):
+## Testing
 
-```bash
-cd MintralCHR.ai
-python -m backend.scripts.generate_scale_data
-```
-
-This script uses "Clinical Archetypes" (e.g., Heart Failure, Diabetes, COPD) to create medically consistent patient histories with matching diagnoses, medications, and lab results. Embeddings are generated via a Mistral/OpenAI-compatible API.
-
-To verify the generated data:
-
-```bash
-python -m backend.scripts.verify_scale_data
-```
-
-## Data Lifecycle
-- Delete patient: `DELETE /patients/{patient_id}`
-- Delete document: `DELETE /documents/{document_id}`
-- Purge old audit/job records:
-```bash
-python -m backend.scripts.purge_data --execute
-```
-`purge_data` exports retention data (`audit_logs`, `audit_events`, `phi_egress_events`) to `RETENTION_EXPORT_DIR` with SHA-256 checksum files before deletion.
-In execute mode, immutable export confirmation is enforced via `RETENTION_IMMUTABLE_DIR` (or `--immutable-dir`) and manifest rows in `retention_manifests`.
-
-Generate a compliance evidence pack:
-```bash
-python -m backend.scripts.generate_evidence_pack
-```
-
-Validate cloud-agnostic healthcare controls:
-```bash
-python -m backend.scripts.validate_controls --require-db
-```
-
-Run backup/restore drill and produce machine-readable artifacts:
-```bash
-python -m backend.scripts.backup_restore_drill --output-dir data/drills/backup_restore --fail-on-errors
-```
-
-## Key Endpoints
-- `GET /health` — liveness
-- `GET /ready` — readiness (DB + storage)
-- `GET /metrics` — Prometheus metrics (admin-only in prod/HIPAA mode)
-- `POST /patients` — create patient
-- `DELETE /patients/{patient_id}` — delete patient + documents
-- `POST /patients/{patient_id}/documents` — upload document
-- `POST /patients/{patient_id}/documents/presign-upload` — issue signed upload URL/token (request: `filename`, optional `content_type`)
-- `POST /patients/{patient_id}/documents/register-upload` — register presigned upload as a document
-- `DELETE /documents/{document_id}` — delete document + storage
-- `GET /documents/{document_id}/download-url` — issue signed download URL
-- `POST /documents/{document_id}/extract` — extract raw text + structured data
-- `POST /documents/{document_id}/embed` — store embeddings in pgvector
-- `POST /chr/draft` — generate CHR draft
-- `GET /jobs/{job_id}` — check async job status
-
-### Gap Features (Clinical Analytics)
-- `GET /api/gap/patients/{patient_id}/trends` — longitudinal lab trends
-- `GET /api/gap/patients/{patient_id}/timeline` — patient event timeline
-- `GET /api/gap/patients/{patient_id}/suggestions` — AI diagnosis suggestions
-- `GET /api/gap/patients/{patient_id}/genetics` — genetics interpretation
-- `GET /api/gap/patients/{patient_id}/drug-interactions` — drug-gene interactions
-- `GET /api/gap/patients/{patient_id}/insights` — clinical rules engine
-
-## OCR Notes
-This MVP uses Tesseract. Install it (macOS):
+Run full backend tests:
 
 ```bash
-brew install tesseract
+python -m pytest -q backend/tests
 ```
 
-## Project Docs
-- `engineering_notes.md` — engineering + compliance notes (living doc)
-- `security_best_practices_report.md` — prioritized HIPAA/enterprise gaps + roadmap
-- `doc/PROJECT_DOC.md` — scope, plan, interview prep
-- `doc/ARCHITECTURE.md` — current and target enterprise healthcare architecture diagrams
-- `doc/CLOUD_AGNOSTIC_HEALTHCARE_BASELINE.md` — provider-neutral healthcare control baseline
-- `WORKFLOW.drawio` — workflow diagram source of truth
-- `doc/PRODUCTION_READINESS.md` — HIPAA hardening checklist + operational notes
-- `doc/K8S_DEPLOYMENT.md` — Kubernetes deployment examples
-- `doc/runbooks/*.md` — key rotation, access reviews, incident and breach response
+Run targeted validation scripts:
 
-## Production Security Defaults
-- OpenAPI docs are disabled automatically when `APP_ENV=prod` or `HIPAA_MODE=true`.
-- Outbound model calls flow through `backend/app/llm_gateway.py`, enforcing `PHI_PROCESSORS`, optional tenant PHI policy (`tenant_phi_policies`), and `phi_egress_events` audit records.
-- CSP is nonce-based for scripts (no `unsafe-inline` in `script-src`) and UI templates avoid inline event handlers.
+```bash
+python -m backend.scripts.validate_runtime_policy
+python -m backend.scripts.validate_llm_gateway_usage
+```
+
+## Security Notes
+
+- API key, scope, and tenant controls are enforced in backend security/authz layers
+- Session + MFA flows are implemented for UI-sensitive actions
+- PHI policy checks and egress logging are enforced in LLM gateway paths
+
+## Troubleshooting
+
+- If startup fails on DB host resolution, verify network/DNS and `DATABASE_URL`
+- If LLM features return empty output, confirm both `MISTRAL_API_KEY` and `OPENAI_API_KEY` are set
+- If storage calls fail, verify `SUPABASE_URL` and service-role key
+
+## Project Structure
+
+- `backend/app/` - API, auth, security, LLM, RAG, OCR, analytics
+- `backend/scripts/` - DB/bootstrap/ops utilities
+- `backend/sql/migrations/` - schema migrations
+- `backend/tests/` - backend test suite
+- `frontend/templates/` - UI templates
+- `data/` - sample/mock clinical data
+
