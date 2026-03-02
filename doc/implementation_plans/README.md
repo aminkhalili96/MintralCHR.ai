@@ -4,7 +4,6 @@ This document serves as the central index for the detailed implementation plans 
 
 ## Execution Snapshot (2026-02-06)
 - Enterprise/HIPAA hardening execution status is tracked in:
-  - `engineering_notes.md` (phase checklist with completion state)
   - `doc/PRODUCTION_READINESS.md` (operational controls and runbooks)
 - This folder remains the long-horizon roadmap; some items are intentionally still future work.
 

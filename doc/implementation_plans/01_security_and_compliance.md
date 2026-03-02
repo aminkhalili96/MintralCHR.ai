@@ -9,7 +9,6 @@
   - RBAC permission helpers + enforcement on sensitive/admin routes
   - Append-only audit event write path (`audit_events`) + immutability trigger migration
 - See also:
-  - `engineering_notes.md` for phase-level completion status
   - `doc/PRODUCTION_READINESS.md` for operational expectations
 
 ## Objective

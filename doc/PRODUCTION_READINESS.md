@@ -168,5 +168,4 @@ python -m backend.scripts.backup_restore_drill --output-dir data/drills/backup_r
 - **Why Multi-Tenancy?**: In healthcare SaaS, strictly separating data by "Tenant" (Clinic) is mandatory. We used "Row-Level Isolation" (adding `tenant_id` to every table) because it's cost-effective and simpler to manage than creating a separate database for every clinic.
 
 ## Engineering Pointers
-- `engineering_notes.md` tracks the hardening plan and engineering conventions.
 - `security_best_practices_report.md` tracks prioritized enterprise/HIPAA gaps found in the codebase.

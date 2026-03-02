@@ -380,7 +380,6 @@ Move MedCHR from current hardened MVP posture to enterprise healthcare-grade rea
 - Documentation updated in:
   - `README.md`
   - `doc/PRODUCTION_READINESS.md`
-  - `engineering_notes.md`
 - Backward-compatible migrations with rollback notes.
 
 ---
