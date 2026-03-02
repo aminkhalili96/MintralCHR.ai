@@ -23,7 +23,6 @@ Establish a healthcare-grade technical baseline that does not lock to any single
 - Secret scan gate: `python -m backend.scripts.scan_secrets`
 - Operational runbooks: `doc/runbooks/*.md`
 - Security/compliance architecture and roadmap:
-  - `doc/ARCHITECTURE.md`
   - `doc/implementation_plans/07_enterprise_hipaa_execution_plan.md`
 
 Execution note: control validation and LLM gateway validation resolve paths from the repository root, so command behavior is consistent when run from either project root or `backend/`.

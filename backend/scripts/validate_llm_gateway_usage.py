@@ -8,12 +8,12 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 BACKEND_DIR = SCRIPT_DIR.parent
 REPO_ROOT = BACKEND_DIR.parent
 DEFAULT_SCAN_ROOT = REPO_ROOT / "backend" / "app"
-ALLOWED_OPENAI_FILES = {
+ALLOWED_PROVIDER_FILES = {
     (REPO_ROOT / "backend" / "app" / "llm_gateway.py").resolve(),
 }
 
 
-def _openai_import_violations(path: Path) -> list[str]:
+def _provider_import_violations(path: Path) -> list[str]:
     try:
         source = path.read_text(encoding="utf-8")
     except UnicodeDecodeError:
@@ -40,10 +40,10 @@ def find_llm_gateway_violations(scan_root: Path = DEFAULT_SCAN_ROOT) -> list[dic
     violations: list[dict[str, object]] = []
     for path in sorted(scan_root.rglob("*.py")):
         resolved = path.resolve()
-        file_violations = _openai_import_violations(path)
+        file_violations = _provider_import_violations(path)
         if not file_violations:
             continue
-        if resolved in ALLOWED_OPENAI_FILES:
+        if resolved in ALLOWED_PROVIDER_FILES:
             continue
         violations.append(
             {
@@ -56,22 +56,22 @@ def find_llm_gateway_violations(scan_root: Path = DEFAULT_SCAN_ROOT) -> list[dic
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Ensure all outbound OpenAI usage is centralized in backend/app/llm_gateway.py."
+        description="Ensure all outbound model SDK usage is centralized in backend/app/llm_gateway.py."
     )
     parser.add_argument(
         "--scan-root",
         default=str(DEFAULT_SCAN_ROOT),
-        help="Directory to scan for direct OpenAI imports.",
+        help="Directory to scan for direct provider SDK imports.",
     )
     args = parser.parse_args()
 
     scan_root = Path(args.scan_root)
     violations = find_llm_gateway_violations(scan_root=scan_root)
     if not violations:
-        print("PASS: OpenAI imports are centralized in llm_gateway.")
+        print("PASS: Provider SDK imports are centralized in llm_gateway.")
         return
 
-    print("FAIL: Direct OpenAI imports found outside llm_gateway:")
+    print("FAIL: Direct provider SDK imports found outside llm_gateway:")
     for item in violations:
         print(f"- {item['file']}")
         for violation in item["violations"]:

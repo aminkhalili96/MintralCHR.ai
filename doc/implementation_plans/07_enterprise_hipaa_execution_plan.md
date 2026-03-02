@@ -124,7 +124,6 @@ Move MedCHR from current hardened MVP posture to enterprise healthcare-grade rea
 **Code targets**
 - `backend/app/ip_whitelist.py`
 - `backend/app/main.py`
-- `doc/PRODUCTION_READINESS.md`
 
 **Acceptance criteria**
 - Blocked IPs receive `403`; allowed IPs proceed.
@@ -179,7 +178,6 @@ Move MedCHR from current hardened MVP posture to enterprise healthcare-grade rea
 **Code targets**
 - `backend/app/config.py`
 - `backend/app/ip_whitelist.py`
-- `doc/PRODUCTION_READINESS.md`
 
 **Acceptance criteria**
 - Untrusted callers cannot spoof client IP via forwarding headers.
@@ -218,7 +216,6 @@ Move MedCHR from current hardened MVP posture to enterprise healthcare-grade rea
 **Code targets**
 - `backend/scripts/purge_data.py`
 - `backend/sql/migrations/013_retention_manifests.sql` (new)
-- `doc/PRODUCTION_READINESS.md`
 
 **Acceptance criteria**
 - Purge proceeds only after successful immutable export confirmation.
@@ -319,7 +316,6 @@ Move MedCHR from current hardened MVP posture to enterprise healthcare-grade rea
 
 **Artifacts**
 - `doc/runbooks/*.md`
-- policy docs linked from `doc/PRODUCTION_READINESS.md`
 
 ---
 
@@ -379,7 +375,6 @@ Move MedCHR from current hardened MVP posture to enterprise healthcare-grade rea
 - Security regression tests included for authz/tenant isolation.
 - Documentation updated in:
   - `README.md`
-  - `doc/PRODUCTION_READINESS.md`
 - Backward-compatible migrations with rollback notes.
 
 ---

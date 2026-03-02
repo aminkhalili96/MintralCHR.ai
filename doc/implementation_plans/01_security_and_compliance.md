@@ -9,7 +9,6 @@
   - RBAC permission helpers + enforcement on sensitive/admin routes
   - Append-only audit event write path (`audit_events`) + immutability trigger migration
 - See also:
-  - `doc/PRODUCTION_READINESS.md` for operational expectations
 
 ## Objective
 Establish a HIPAA-compliant security foundation focusing on Identity & Access Management (IAM), comprehensive audit logging, and data protection.

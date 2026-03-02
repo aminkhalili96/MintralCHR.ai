@@ -1,5 +1,5 @@
 """
-Vision-based OCR using GPT-4o Vision for complex medical documents.
+Vision-based OCR using a multimodal Mistral-compatible model for complex medical documents.
 
 This module handles:
 - Table structure preservation
@@ -22,7 +22,7 @@ from .llm_gateway import create_chat_completion
 
 def extract_with_vision(data: bytes, content_type: str) -> dict:
     """
-    Use GPT-4o Vision for layout-aware extraction.
+    Use multimodal model inference for layout-aware extraction.
     Returns structured text with table preservation.
     """
     settings = get_settings()
@@ -106,7 +106,7 @@ Return a JSON object:
 
     try:
         response = create_chat_completion(
-            model="gpt-4o",
+            model=settings.openai_model,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {

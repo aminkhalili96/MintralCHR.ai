@@ -3,7 +3,7 @@ from __future__ import annotations
 from time import monotonic
 from typing import Any
 
-from openai import OpenAI
+from openai import OpenAI as ProviderClient
 from psycopg.types.json import Json
 
 from .config import get_settings
@@ -11,23 +11,23 @@ from .db import get_actor_context, get_conn, get_tenant_context
 from .phi import ensure_phi_processor, redact_text
 
 
-def get_openai_client(*, timeout_seconds: int | None = None) -> OpenAI:
+def get_openai_client(*, timeout_seconds: int | None = None) -> ProviderClient:
     """
-    Create an OpenAI client with HIPAA/PHI policy enforcement.
+    Create the configured LLM client with HIPAA/PHI policy enforcement.
 
-    - In HIPAA mode, requires OpenAI to be listed in `PHI_PROCESSORS`.
+    - In HIPAA mode, requires the configured provider to be listed in `PHI_PROCESSORS`.
     - Uses the configured request timeout.
     """
     settings = get_settings()
     if not settings.mistral_api_key:
         raise RuntimeError("MISTRAL_API_KEY not configured.")
     if settings.hipaa_mode:
-        ensure_phi_processor("openai")
+        ensure_phi_processor("mistral")
     timeout = timeout_seconds if timeout_seconds is not None else settings.openai_timeout_seconds
     kwargs = {"api_key": settings.mistral_api_key, "timeout": timeout}
     if settings.openai_base_url:
         kwargs["base_url"] = settings.openai_base_url
-    return OpenAI(**kwargs)
+    return ProviderClient(**kwargs)
 
 
 def redact_if_enabled(text: str) -> str:
@@ -182,12 +182,12 @@ def create_chat_completion(
     tenant_id = get_tenant_context()
     actor_id = get_actor_context()
     try:
-        _enforce_phi_policy(processor="openai", operation=operation, tenant_id=tenant_id)
+        _enforce_phi_policy(processor="mistral", operation=operation, tenant_id=tenant_id)
     except Exception as exc:
         _log_phi_egress(
             tenant_id=tenant_id,
             actor_id=actor_id,
-            processor="openai",
+            processor="mistral",
             operation=operation,
             model=target_model,
             request_id=request_id,
@@ -219,7 +219,7 @@ def create_chat_completion(
     _log_phi_egress(
         tenant_id=tenant_id,
         actor_id=actor_id,
-        processor="openai",
+        processor="mistral",
         operation=operation,
         model=getattr(response, "model", target_model),
         request_id=request_id,
@@ -244,12 +244,12 @@ def create_embedding(
     tenant_id = get_tenant_context()
     actor_id = get_actor_context()
     try:
-        _enforce_phi_policy(processor="openai", operation=operation, tenant_id=tenant_id)
+        _enforce_phi_policy(processor="mistral", operation=operation, tenant_id=tenant_id)
     except Exception as exc:
         _log_phi_egress(
             tenant_id=tenant_id,
             actor_id=actor_id,
-            processor="openai",
+            processor="mistral",
             operation=operation,
             model=target_model,
             request_id=request_id,
@@ -282,7 +282,7 @@ def create_embedding(
     _log_phi_egress(
         tenant_id=tenant_id,
         actor_id=actor_id,
-        processor="openai",
+        processor="mistral",
         operation=operation,
         model=target_model,
         request_id=request_id,
