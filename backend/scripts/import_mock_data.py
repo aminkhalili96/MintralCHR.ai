@@ -93,11 +93,11 @@ def main() -> None:
     do_embed = not args.skip_embed
     do_draft = not args.skip_draft
 
-    if do_embed and not settings.openai_api_key:
-        print("OPENAI_API_KEY not set; skipping embeddings.")
+    if do_embed and not settings.mistral_api_key:
+        print("MISTRAL_API_KEY not set; skipping embeddings.")
         do_embed = False
-    if do_draft and not settings.openai_api_key:
-        print("OPENAI_API_KEY not set; skipping draft.")
+    if do_draft and not settings.mistral_api_key:
+        print("MISTRAL_API_KEY not set; skipping draft.")
         do_draft = False
 
     data_root = Path(args.data_dir).resolve()

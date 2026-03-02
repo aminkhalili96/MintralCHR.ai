@@ -75,8 +75,8 @@ def audit_submission(draft_text: str, patient_id: str, context_chunks: list[dict
     Run the auditor. Keep failures non-fatal (flag for human review).
     """
     settings = get_settings()
-    if not settings.openai_api_key:
-        return {"is_verified": False, "issues": ["Auditor unavailable: OPENAI_API_KEY not configured."]}
+    if not settings.mistral_api_key:
+        return {"is_verified": False, "issues": ["Auditor unavailable: MISTRAL_API_KEY not configured."]}
 
     auditor = AuditorAgent()
     return auditor.verify_draft(draft_text, context_chunks or [])

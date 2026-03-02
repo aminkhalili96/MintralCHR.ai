@@ -227,7 +227,7 @@ def startup() -> None:
     configure_sso()
     if settings.hipaa_mode:
         ensure_phi_processor("supabase")
-        if settings.openai_api_key:
+        if settings.mistral_api_key:
             ensure_phi_processor("openai")
     # Ensure the storage bucket exists for uploads
     ensure_bucket(settings.storage_bucket)

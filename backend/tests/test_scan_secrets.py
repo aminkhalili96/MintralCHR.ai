@@ -8,7 +8,7 @@ def _fake_openai_key() -> str:
 
 
 def test_scan_text_for_patterns_detects_openai_key():
-    findings = scan_text_for_patterns(f"OPENAI_API_KEY={_fake_openai_key()}")
+    findings = scan_text_for_patterns(f"token={_fake_openai_key()}")
     assert any(code == "OPENAI_KEY" for code, _ in findings)
 
 

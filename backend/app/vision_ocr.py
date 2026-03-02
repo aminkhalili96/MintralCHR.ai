@@ -26,7 +26,7 @@ def extract_with_vision(data: bytes, content_type: str) -> dict:
     Returns structured text with table preservation.
     """
     settings = get_settings()
-    if not settings.openai_api_key:
+    if not settings.mistral_api_key:
         return {"text": "", "method": "vision", "error": "No API key"}
     
     # Convert PDF pages to images if needed

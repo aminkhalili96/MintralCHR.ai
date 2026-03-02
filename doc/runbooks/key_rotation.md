@@ -3,7 +3,7 @@
 ## Scope
 - `APP_SECRET_KEY`
 - DB-backed API keys (`api_keys`)
-- External provider secrets (`OPENAI_API_KEY`, SSO client secrets, Supabase service role key)
+- External provider secrets (`MISTRAL_API_KEY`, SSO client secrets, Supabase service role key)
 
 ## Cadence
 - Quarterly scheduled rotation.

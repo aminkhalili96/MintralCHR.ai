@@ -151,7 +151,7 @@ Each finding includes: **Rule ID**, Severity, Location, Evidence, Impact, Fix, a
 
 **Evidence:**
 - `backend/app/vision_ocr.py:112-133` — sends base64 medical document images to OpenAI.
-- `backend/app/diagnosis_suggester.py:8` — `client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))` (no HIPAA gate).
+- `backend/app/diagnosis_suggester.py:8` — legacy direct client initialization pattern (no HIPAA gate).
 - `backend/app/auditor.py:16-17` — OpenAI client created directly.
 
 **Impact (one sentence):** In HIPAA-mode deployments you can still accidentally transmit PHI to a non-approved processor (or without redaction), invalidating your intended HIPAA safeguards.

@@ -237,7 +237,7 @@ def check_openai_health() -> dict:
 
     settings = get_settings()
     
-    if not settings.openai_api_key:
+    if not settings.mistral_api_key:
         return {"status": "not_configured"}
     
     try:

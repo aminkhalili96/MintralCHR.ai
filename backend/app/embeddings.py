@@ -8,8 +8,8 @@ from .llm_gateway import create_embedding, redact_if_enabled
 
 def embed_texts(texts: List[str]) -> List[List[float]]:
     settings = get_settings()
-    if not settings.openai_api_key:
-        raise RuntimeError("OPENAI_API_KEY not configured.")
+    if not settings.mistral_api_key:
+        raise RuntimeError("MISTRAL_API_KEY not configured.")
     safe_texts = [redact_if_enabled(text) for text in texts]
     resp = _create_embeddings(settings.openai_embedding_model, safe_texts)
     return [item.embedding for item in resp.data]

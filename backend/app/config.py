@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     storage_bucket: str = "medchr-uploads"
 
     openai_api_key: str | None = None
-    openai_base_url: str | None = None
+    openai_base_url: str | None = "https://api.mistral.ai/v1"
     openai_model: str = "mistral-large-latest"
     openai_embedding_model: str = "mistral-embed"
     openai_timeout_seconds: int = 30
@@ -106,4 +106,12 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()
+    settings = Settings()
+    # Mistral is the canonical key; mirror to/from legacy OpenAI-compatible fields.
+    if not settings.mistral_api_key and settings.openai_api_key:
+        settings.mistral_api_key = settings.openai_api_key
+    if not settings.openai_api_key and settings.mistral_api_key:
+        settings.openai_api_key = settings.mistral_api_key
+    if not settings.openai_base_url:
+        settings.openai_base_url = "https://api.mistral.ai/v1"
+    return settings

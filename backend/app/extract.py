@@ -112,7 +112,7 @@ def extract_structured(text: str, enrich: bool = True) -> Dict[str, Any]:
         Structured extraction with labs, medications, diagnoses, etc.
     """
     settings = get_settings()
-    if not settings.openai_api_key:
+    if not settings.mistral_api_key:
         return ExtractionData().dict()
 
     # Smart chunking for long documents

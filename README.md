@@ -22,9 +22,6 @@ Mistral-first clinical reporting platform that transforms raw medical records (P
 
 This project is configured to use Mistral as the primary model provider.
 
-Important: some internal modules still check `OPENAI_API_KEY` while requests are sent to Mistral-compatible endpoints.
-For full feature coverage, set **both** `MISTRAL_API_KEY` and `OPENAI_API_KEY` to your Mistral key.
-
 ### Required environment values
 
 ```bash
@@ -37,7 +34,6 @@ STORAGE_BUCKET=medchr-uploads
 
 # Mistral (primary)
 MISTRAL_API_KEY=<your_mistral_key>
-OPENAI_API_KEY=<your_mistral_key>
 OPENAI_BASE_URL=https://api.mistral.ai/v1
 OPENAI_MODEL=mistral-large-latest
 OPENAI_EMBEDDING_MODEL=mistral-embed
@@ -164,7 +160,7 @@ python -m backend.scripts.validate_llm_gateway_usage
 ## Troubleshooting
 
 - If startup fails on DB host resolution, verify network/DNS and `DATABASE_URL`
-- If LLM features return empty output, confirm both `MISTRAL_API_KEY` and `OPENAI_API_KEY` are set
+- If LLM features return empty output, confirm `MISTRAL_API_KEY` is set correctly
 - If storage calls fail, verify `SUPABASE_URL` and service-role key
 
 ## Project Structure
@@ -175,4 +171,3 @@ python -m backend.scripts.validate_llm_gateway_usage
 - `backend/tests/` - backend test suite
 - `frontend/templates/` - UI templates
 - `data/` - sample/mock clinical data
-

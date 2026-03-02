@@ -73,7 +73,7 @@ def generate_diagnosis_suggestions(
         List of suggested diagnoses with rationale.
     """
     settings = get_settings()
-    if not settings.openai_api_key:
+    if not settings.mistral_api_key:
         return []
 
     # Format inputs

@@ -14,8 +14,8 @@ def generate_chr_draft(
     context_chunks: List[Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
     settings = get_settings()
-    if not settings.openai_api_key:
-        raise RuntimeError("OPENAI_API_KEY not configured.")
+    if not settings.mistral_api_key:
+        raise RuntimeError("MISTRAL_API_KEY not configured.")
 
     system = (
         "You are a clinical report assistant. Draft a clinician-facing summary "
@@ -63,8 +63,8 @@ def query_chr(
 ) -> Dict[str, Any]:
     """Answer a specific clinical question using RAG context from patient documents."""
     settings = get_settings()
-    if not settings.openai_api_key:
-        raise RuntimeError("OPENAI_API_KEY not configured.")
+    if not settings.mistral_api_key:
+        raise RuntimeError("MISTRAL_API_KEY not configured.")
 
     system = (
         "You are a clinical assistant helping a clinician answer specific questions about a patient's health data. "

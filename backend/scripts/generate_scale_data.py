@@ -6,18 +6,18 @@ This script generates 100 realistic, complex, hospital-grade patient records
 directly into the Supabase PostgreSQL database. No local files are created.
 
 Usage:
-    cd MedCHR.ai
+    cd MintralCHR.ai
     python -m backend.scripts.generate_scale_data
 
 Requirements:
-    - Valid .env file with DATABASE_URL and OPENAI_API_KEY
+    - Valid .env file with DATABASE_URL and MISTRAL_API_KEY
     - All backend dependencies installed (pip install -r backend/requirements.txt)
 
 Key Features:
     - Uses "Clinical Archetypes" (Heart Failure, Diabetes, COPD, etc.) to ensure
       medically consistent patient histories.
     - Generates matching diagnoses, medications, and lab results for each patient.
-    - Creates embeddings via OpenAI API for RAG search functionality.
+    - Creates embeddings via Mistral API for RAG search functionality.
     - Supports multimorbidity (patients can have 1-3 conditions).
 """
 

@@ -35,7 +35,7 @@ def test_redact_messages_preserves_image_url(monkeypatch):
 def test_create_chat_completion_requires_tenant_context_in_hipaa_mode(monkeypatch):
     monkeypatch.setenv("HIPAA_MODE", "true")
     monkeypatch.setenv("PHI_PROCESSORS", "openai")
-    monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+    monkeypatch.setenv("MISTRAL_API_KEY", "test-key")
     get_settings.cache_clear()
 
     with patch("backend.app.llm_gateway.get_tenant_context", return_value=None), patch(
@@ -53,7 +53,7 @@ def test_create_chat_completion_requires_tenant_context_in_hipaa_mode(monkeypatc
 def test_create_embedding_applies_redaction_and_calls_openai(monkeypatch):
     monkeypatch.setenv("HIPAA_MODE", "true")
     monkeypatch.setenv("PHI_PROCESSORS", "openai")
-    monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+    monkeypatch.setenv("MISTRAL_API_KEY", "test-key")
     monkeypatch.setenv("PHI_REDACTION_ENABLED", "true")
     get_settings.cache_clear()
 
