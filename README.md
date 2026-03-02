@@ -1,6 +1,6 @@
-# MedCHR.ai
+# MintralCHR.ai
 
-Clinician-in-the-loop pipeline for turning raw patient records into editable Client Health Reports (CHRs).
+Mistral-powered clinician-in-the-loop pipeline for turning raw patient records into editable Client Health Reports (CHRs).
 
 ## Recent Changes (2026-03-01)
 - **Bug fix**: Fixed 500 Internal Server Error on all authenticated pages. Root cause: `ip_whitelist.py` queried non-existent `ip_whitelist` column; corrected to use `allowed_ips` (PostgreSQL ARRAY type).
@@ -134,11 +134,11 @@ Optional flags:
 Generate 100 realistic, complex hospital-grade patient records directly into the database (no local files created):
 
 ```bash
-cd MedCHR.ai
+cd MintralCHR.ai
 python -m backend.scripts.generate_scale_data
 ```
 
-This script uses "Clinical Archetypes" (e.g., Heart Failure, Diabetes, COPD) to create medically consistent patient histories with matching diagnoses, medications, and lab results. Embeddings are generated via the OpenAI API.
+This script uses "Clinical Archetypes" (e.g., Heart Failure, Diabetes, COPD) to create medically consistent patient histories with matching diagnoses, medications, and lab results. Embeddings are generated via a Mistral/OpenAI-compatible API.
 
 To verify the generated data:
 
